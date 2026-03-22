@@ -1,0 +1,57 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="BrainSimulatorAvalonia.MainWindow"
+        Width="800" Height="600"
+        Title="BrainSimulator (Avalonia)">
+    <DockPanel>
+        <!-- Main Menu -->
+        <Menu DockPanel.Dock="Top" Height="26" Background="LightGray">
+            <MenuItem Header="_File">
+                <MenuItem Header="_New"/>
+                <MenuItem Header="_Open"/>
+                <MenuItem Header="_Save"/>
+                <MenuItem Header="Save _As"/>
+                <Separator/>
+                <MenuItem Header="Recent"/>
+                <Separator/>
+                <MenuItem Header="_Exit"/>
+            </MenuItem>
+        </Menu>
+
+        <!-- Main Layout Grid -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <!-- Toolbar -->
+            <DockPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Height="30" Margin="7,5,0,0" VerticalAlignment="Top">
+                <Button Content="New" ToolTip.Tip="New File"/>
+                <Button Content="Open" ToolTip.Tip="Open File"/>
+                <Button Content="Save" ToolTip.Tip="Save File"/>
+                <Button Content="Save As" ToolTip.Tip="Save File As"/>
+                <Label Width="30"/>
+                <Label Width="5"/>
+                <Label Width="30"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <TextBlock Text="Add Module:" Foreground="White"/>
+                    <ComboBox Width="271" Height="26"/>
+                </StackPanel>
+            </DockPanel>
+
+            <!-- Sidebar -->
+            <Border BorderThickness="4" Width="180" Grid.Column="0" Grid.Row="1" BorderBrush="Gray" HorizontalAlignment="Left">
+                <StackPanel/>
+            </Border>
+            <!-- Main Content Area (stub) -->
+            <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Text="Welcome to BrainSimulator (Avalonia)!" FontSize="24" Margin="0,0,0,20" />
+            </StackPanel>
+        </Grid>
+    </DockPanel>
+</Window>
