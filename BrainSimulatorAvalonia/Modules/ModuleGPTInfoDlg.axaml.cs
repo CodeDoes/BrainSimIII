@@ -28,27 +28,74 @@ namespace BrainSimulatorAvalonia.Modules
 
         public ModuleGPTInfoDlg()
         {
-            // TODO: Initialize Avalonia dialog components here
+            InitializeComponent();
         }
 
         public override bool Draw(bool checkDrawTimer)
         {
-            // TODO: Implement Avalonia UI update logic for status label and output
-            // Example: Update StatusLabel and txtOutput if available
+            if (this.FindControl<Label>("StatusLabel") is Label statusLabel)
+            {
+                var mf = (ModuleGPTInfo)base.ParentModule;
+                statusLabel.Content = $"{GPT.totalTokensUsed} tokens used.  {mf.theUKS.Labeled(\"unknownObject\")?.Children.Count} unknown Things.  ";
+            }
             return base.Draw(checkDrawTimer);
         }
 
-        // TODO: Implement Avalonia equivalent for SizeChanged event
-        private void OnCanvasSizeChanged(object? sender, RoutedEventArgs e)
-        {
-            Draw(false);
-        }
-
-        // TODO: Implement output text update logic for Avalonia controls
         private void SetOutputText(string theText)
         {
-            // Example: Set txtOutput.Text = theText;
-            // Update status label as needed
+            if (this.FindControl<TextBox>("txtOutput") is TextBox txtOutput)
+                txtOutput.Text = theText;
+            if (this.FindControl<Label>("StatusLabel") is Label statusLabel)
+            {
+                var mf = (ModuleGPTInfo)base.ParentModule;
+                statusLabel.Content = $"{GPT.totalTokensUsed} tokens used.  {mf.theUKS.Labeled(\"unknownObject\")?.Children.Count} unknown Things.  ";
+            }
         }
+
+        private void LoadButton_Click(object? sender, RoutedEventArgs e)
+        {
+            // TODO: Implement logic for loading word file
+        }
+
+        private void textInput_KeyDown(object? sender, Avalonia.Input.KeyEventArgs e)
+        {
+            // TODO: Implement logic for handling key down in textInput
+        }
+
+        private void ReParseButton_Click(object? sender, RoutedEventArgs e)
+        {
+            // TODO: Implement logic for re-parsing
+        }
+
+        private void HandleUnknownsButton_Click(object? sender, RoutedEventArgs e)
+        {
+            // TODO: Implement logic for handling unknowns
+        }
+
+        private void VerifyAllParentsButton_Click(object? sender, RoutedEventArgs e)
+        {
+            // TODO: Implement logic for verifying all parents
+        }
+
+        private void AddClausesToAllButton_Click(object? sender, RoutedEventArgs e)
+        {
+            // TODO: Implement logic for adding clauses to all
+        }
+
+        private void SolveAmbiguityButton_Click(object? sender, RoutedEventArgs e)
+        {
+            // TODO: Implement logic for solving ambiguity
+        }
+
+        private void AmbiguityFileButton_Click(object? sender, RoutedEventArgs e)
+        {
+            // TODO: Implement logic for ambiguity file
+        }
+
+        private void RemoveDuplicatesButton_Click(object? sender, RoutedEventArgs e)
+        {
+            // TODO: Implement logic for removing duplicates
+        }
+        // If there are any additional event handlers, implement them here.
     }
 }

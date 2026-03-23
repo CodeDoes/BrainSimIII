@@ -5,17 +5,17 @@
                    Title="Get data from the GPT API" Width="800" Height="450" Background="Gray">
     <Grid Name="theGrid">
         <TextBox Name="txtOutput" FontSize="14" TextWrapping="Wrap" Margin="58,137,79,54"/>
-        <Button Name="LoadButton" Content="Load Word File" HorizontalAlignment="Right" VerticalAlignment="Top" Height="28" Width="148" Margin="0,45,79,0" FontSize="16"/>
-        <TextBox Name="textInput" Height="37" Margin="58,73,458,0" TextWrapping="Wrap" FontSize="16" VerticalAlignment="Top"/>
-        <Button Content="Re-Parse" HorizontalAlignment="Right" Margin="0,11,239,0" Height="28" Width="148" FontSize="16" VerticalAlignment="Top"/>
-        <Button Content="Handle Unknowns" HorizontalAlignment="Right" Margin="0,45,239,0" Height="28" Width="148" FontSize="16" VerticalAlignment="Top"/>
-        <Button Content="Verify All Parents" HorizontalAlignment="Right" Margin="0,11,79,0" VerticalAlignment="Top" Height="28" Width="148" FontSize="16"/>
-        <Button Content="Add Clauses To All" HorizontalAlignment="Right" Margin="0,78,239,0" Height="27" Width="148" FontSize="16" VerticalAlignment="Top"/>
+        <Button Name="LoadButton" Content="Load Word File" HorizontalAlignment="Right" VerticalAlignment="Top" Height="28" Width="148" Margin="0,45,79,0" FontSize="16" Click="LoadButton_Click"/>
+        <TextBox Name="textInput" Height="37" Margin="58,73,458,0" TextWrapping="Wrap" FontSize="16" VerticalAlignment="Top" KeyDown="textInput_KeyDown"/>
+        <Button Name="ReParseButton" Content="Re-Parse" HorizontalAlignment="Right" Margin="0,11,239,0" Height="28" Width="148" FontSize="16" VerticalAlignment="Top" Click="ReParseButton_Click"/>
+        <Button Name="HandleUnknownsButton" Content="Handle Unknowns" HorizontalAlignment="Right" Margin="0,45,239,0" Height="28" Width="148" FontSize="16" VerticalAlignment="Top" Click="HandleUnknownsButton_Click"/>
+        <Button Name="VerifyAllParentsButton" Content="Verify All Parents" HorizontalAlignment="Right" Margin="0,11,79,0" VerticalAlignment="Top" Height="28" Width="148" FontSize="16" Click="VerifyAllParentsButton_Click"/>
+        <Button Name="AddClausesToAllButton" Content="Add Clauses To All" HorizontalAlignment="Right" Margin="0,78,239,0" Height="27" Width="148" FontSize="16" VerticalAlignment="Top" Click="AddClausesToAllButton_Click"/>
         <Label Name="StatusLabel" Margin="58,0,300,10" Height="29" VerticalAlignment="Bottom"/>
         <Label Content="GPT Request. Follow by [Enter] for Info.&#10;Follow by [Up-arrow] for parents only." HorizontalAlignment="Left" Height="44" Margin="58,20,0,0" VerticalAlignment="Top" Width="309"/>
-        <Button Content="Solve Ambiguity" HorizontalAlignment="Right" Margin="0,78,79,0" Height="27" Width="148" FontSize="16" VerticalAlignment="Top"/>
-        <Button Content="Ambiguity File" HorizontalAlignment="Right" Margin="0,110,79,0" Height="27" Width="148" FontSize="16" VerticalAlignment="Top"/>
-        <Button Content="Remove Duplicates" HorizontalAlignment="Right" Margin="0,110,239,0" Height="27" Width="148" FontSize="16" VerticalAlignment="Top"/>
+        <Button Name="SolveAmbiguityButton" Content="Solve Ambiguity" HorizontalAlignment="Right" Margin="0,78,79,0" Height="27" Width="148" FontSize="16" VerticalAlignment="Top" Click="SolveAmbiguityButton_Click"/>
+        <Button Name="AmbiguityFileButton" Content="Ambiguity File" HorizontalAlignment="Right" Margin="0,110,79,0" Height="27" Width="148" FontSize="16" VerticalAlignment="Top" Click="AmbiguityFileButton_Click"/>
+        <Button Name="RemoveDuplicatesButton" Content="Remove Duplicates" HorizontalAlignment="Right" Margin="0,110,239,0" Height="27" Width="148" FontSize="16" VerticalAlignment="Top" Click="RemoveDuplicatesButton_Click"/>
     </Grid>
     <!-- TODO: Wire up event handlers and bindings in code-behind -->
 </mods:ModuleBaseDlg>
