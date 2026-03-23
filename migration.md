@@ -90,7 +90,7 @@ This document provides guidance for migrating the BrainSimulator (WPF/.NET Frame
 - [x] Modules/ModuleEmptyDlg.xaml.cs → ModuleEmptyDlg.axaml.cs
 - [x] Modules/ModuleGPTInfo.cs
 - [x] Modules/ModuleGPTInfoDlg.xaml → ModuleGPTInfoDlg.axaml
-  - [x] Modules/ModuleGPTInfoDlg.xaml.cs → ModuleGPTInfoDlg.axaml.cs ✅
+  - [x] Modules/ModuleGPTInfoDlg.xaml.cs → ModuleGPTInfoDlg.axaml.cs ✅ (fully migrated, 1:1 logic with WPF)
 - [x] Modules/ModuleMine.cs
 - [x] Modules/ModuleOnlineInfo.cs
 - [x] Modules/ModuleOnlineInfoDlg.xaml → ModuleOnlineInfoDlg.axaml
@@ -142,5 +142,8 @@ For detailed migration steps, refer to the [Avalonia documentation](https://docs
   - [ ] ModuleDescription.axaml.cs (replace stub logic with real Avalonia implementation)
   - [ ] NotesDialog.axaml.cs (replace stub logic with real Avalonia implementation)
   - [ ] Any other files migrated with placeholders
+
+**Notes:**
+- ModuleGPTInfoDlg.axaml.cs is now fully migrated and matches the WPF logic 1:1. All event handlers and async logic are ported. No blockers or missing features found.
 
 Update this section as files are fully migrated with real logic.
