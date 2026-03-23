@@ -7,6 +7,14 @@ using Avalonia.Layout;
 using System.Linq;
 
 namespace BrainSimulatorAvalonia
+    // Event handler stubs for menu and toolbar actions (1:1 with WPF)
+    public void button_FileNew_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e) { /* TODO: Implement new file logic */ }
+    public void buttonLoad_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e) { /* TODO: Implement open file logic */ }
+    public void buttonSave_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e) { /* TODO: Implement save file logic */ }
+    public void buttonSaveAs_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e) { /* TODO: Implement save as logic */ }
+    public void button_Exit_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e) { /* TODO: Implement exit logic */ }
+    public void ModuleListComboBox_DropDownClosed(object? sender, EventArgs e) { /* TODO: Implement module list dropdown closed logic */ }
+    public void ModuleListComboBox_PreviewKeyDown(object? sender, Avalonia.Input.KeyEventArgs e) { /* TODO: Implement module list preview key down logic */ }
 {
     public partial class MainWindow : Window
     {

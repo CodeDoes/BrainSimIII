@@ -7,14 +7,14 @@
         <!-- Main Menu -->
         <Menu DockPanel.Dock="Top" Height="26" Background="LightGray">
             <MenuItem Header="_File">
-                <MenuItem Header="_New"/>
-                <MenuItem Header="_Open"/>
-                <MenuItem Header="_Save"/>
-                <MenuItem Header="Save _As"/>
+                <MenuItem Header="_New" Name="MenuFileNew" Click="button_FileNew_Click"/>
+                <MenuItem Header="_Open" Name="MenuFileOpen" Click="buttonLoad_Click"/>
+                <MenuItem Header="_Save" Name="MenuFileSave" Click="buttonSave_Click"/>
+                <MenuItem Header="Save _As" Name="MenuFileSaveAs" Click="buttonSaveAs_Click"/>
                 <Separator/>
-                <MenuItem Header="Recent"/>
+                <MenuItem Header="Recent" Name="MRUListMenu"/>
                 <Separator/>
-                <MenuItem Header="_Exit"/>
+                <MenuItem Header="_Exit" Name="MenuFileExit" Click="button_Exit_Click"/>
             </MenuItem>
         </Menu>
 
@@ -31,16 +31,24 @@
 
             <!-- Toolbar -->
             <DockPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Height="30" Margin="7,5,0,0" VerticalAlignment="Top">
-                <Button Content="New" ToolTip.Tip="New File"/>
-                <Button Content="Open" ToolTip.Tip="Open File"/>
-                <Button Content="Save" ToolTip.Tip="Save File"/>
-                <Button Content="Save As" ToolTip.Tip="Save File As"/>
+                <Button Name="NewButton" ToolTip.Tip="New File" Click="button_FileNew_Click">
+                    <Image Source="/resources/icons/NewFile_16x.png" Height="20"/>
+                </Button>
+                <Button Name="OpenButton" ToolTip.Tip="Open File" Click="buttonLoad_Click">
+                    <Image Source="/resources/icons/OpenFile_16x.png" Height="20"/>
+                </Button>
+                <Button Name="SaveButton" ToolTip.Tip="Save File" Click="buttonSave_Click">
+                    <Image Source="/resources/icons/Save_16x.png" Height="20"/>
+                </Button>
+                <Button Name="SaveAsButton" ToolTip.Tip="Save File As" Click="buttonSaveAs_Click">
+                    <Image Source="/resources/icons/SaveAs_16x.png" Height="20"/>
+                </Button>
                 <Label Width="30"/>
                 <Label Width="5"/>
                 <Label Width="30"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                    <TextBlock Text="Add Module:" Foreground="White"/>
-                    <ComboBox Width="271" Height="26"/>
+                    <Label Content="Add Module:" Foreground="White"/>
+                    <ComboBox Name="ModuleListComboBox" Width="271" Height="26"/>
                 </StackPanel>
             </DockPanel>
 
