@@ -1,0 +1,27 @@
+<mods:ModuleBaseDlg xmlns="https://github.com/avaloniaui"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:mods="clr-namespace:BrainSimulatorAvalonia.Modules"
+                   x:Class="BrainSimulatorAvalonia.Modules.ModuleOnlineInfoDlg"
+                   Title="ModuleDlgConceptNet Module Dialog" Width="800" Height="450" Background="Gray">
+    <Grid Name="theGrid">
+        <TextBox Name="txtInput" Text="Single-Word" FontSize="16" TextWrapping="Wrap" Margin="58,12,410,0" Height="87" VerticalAlignment="Top"/>
+        <TextBox Name="txtOutput" FontSize="14" TextWrapping="Wrap" Margin="58,133,79,54"/>
+        <ComboBox Name="comboSelection" SelectedIndex="0" FontSize="18" Height="37" Margin="0,62,79,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="211">
+            <ComboBoxItem>ChatGPT</ComboBoxItem>
+            <ComboBoxItem>CSKG</ComboBoxItem>
+            <ComboBoxItem>ConceptNet</ComboBoxItem>
+            <ComboBoxItem>WikiData</ComboBoxItem>
+            <ComboBoxItem>Wiktionary</ComboBoxItem>
+            <ComboBoxItem>Free Dictionary</ComboBoxItem>
+            <ComboBoxItem>Webster's Elementary</ComboBoxItem>
+            <ComboBoxItem>Kid's Definition</ComboBoxItem>
+            <ComboBoxItem>Oxford Word List</ComboBoxItem>
+        </ComboBox>
+        <Button Content="Clear" Height="29" Margin="0,0,152,10" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="102"/>
+        <ComboBox Name="relationshipSelection" SelectedIndex="0" FontSize="18" Height="37" Margin="0,62,309,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="91">
+            <ComboBoxItem Content="is-a"/>
+            <ComboBoxItem Content="hasa"/>
+        </ComboBox>
+    </Grid>
+    <!-- TODO: Wire up event handlers and bindings in code-behind -->
+</mods:ModuleBaseDlg>
