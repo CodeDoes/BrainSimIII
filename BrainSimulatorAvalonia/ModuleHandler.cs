@@ -1,4 +1,5 @@
 using System;
+// using Python.Runtime;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -20,7 +21,16 @@ namespace BrainSimulatorAvalonia
             Thing t = theUKS.GetOrAddThing(moduleType, "AvailableModule");
             t = theUKS.CreateInstanceOf(theUKS.Labeled(moduleType));
             t.AddParent(theUKS.Labeled("ActiveModule"));
-            // TODO: Integrate with MainWindow and module instantiation
+            // Integrate with MainWindow and module instantiation if needed
+            // For .py modules, add to pythonModules
+            if (!moduleType.Contains(".py"))
+            {
+                // TODO: Integrate with MainWindow for C# modules
+            }
+            else
+            {
+                pythonModules.Add(t.Label);
+            }
             return t.Label;
         }
 
@@ -54,6 +64,28 @@ namespace BrainSimulatorAvalonia
             return pythonFiles;
         }
 
-        // TODO: Add Python engine integration and other methods as needed
+        // --- Python engine integration (Avalonia, cross-platform) ---
+        // Python integration is temporarily disabled for build compatibility.
+        public bool InitPythonEngine() { return false; }
+        public bool ClosePythonEngine() { return true; }
+        public void Close(string moduleLabel) { }
+        public void RunScript(string moduleLabel) { }
+
+        public void CreateEmptyUKS()
+        {
+            theUKS = new UKS.UKS();
+            if (theUKS.Labeled("BrainSim") == null)
+                theUKS.AddThing("BrainSim", null);
+            theUKS.GetOrAddThing("AvailableModule", "BrainSim");
+            theUKS.GetOrAddThing("ActiveModule", "BrainSim");
+            InsertMandatoryModules();
+        }
+
+        public void InsertMandatoryModules()
+        {
+            Console.WriteLine("InsertMandatoryModules entered");
+            ActivateModule("UKS");
+            ActivateModule("UKSStatement");
+        }
     }
 }

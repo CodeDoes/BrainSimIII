@@ -1,0 +1,19 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="BrainSimulatorAvalonia.NotesDialog"
+        Width="753.5" Height="412.5"
+        Title="Network Notes">
+    <Grid>
+        <ToolBar Name="mainToolBar" Height="30" VerticalAlignment="Top">
+            <Button Content="B" FontWeight="Bold" ToolTip.Tip="Bold"/>
+            <Button Content="I" FontStyle="Italic" FontWeight="Bold" ToolTip.Tip="Italic"/>
+            <Button Content="U" ToolTip.Tip="Underline"/>
+            <Button ToolTip.Tip="Grow Font"/>
+            <Button ToolTip.Tip="Shrink Font"/>
+        </ToolBar>
+        <TextBox Name="mainRTB" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Margin="0,30,0,105"/>
+        <Button Name="OKbutton" Content="OK" Width="95" Height="32" HorizontalAlignment="Left" Margin="431,0,0,35" VerticalAlignment="Bottom"/>
+        <Button Name="CancelButton" Content="Cancel" Width="95" Height="32" HorizontalAlignment="Left" Margin="314,0,0,35" VerticalAlignment="Bottom"/>
+        <CheckBox Name="checkBox" Content="Don't show this on startup" Width="218" Height="32" HorizontalAlignment="Left" Margin="81,0,0,35" VerticalAlignment="Bottom"/>
+    </Grid>
+</Window>

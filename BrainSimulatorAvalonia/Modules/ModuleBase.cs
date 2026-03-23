@@ -4,6 +4,7 @@ namespace BrainSimulatorAvalonia.Modules
 {
     public class ModuleBase
     {
+        public string Label { get; set; } = string.Empty;
         public bool allowMultipleDialogs = false;
         public virtual void Fire() { }
         public virtual void Initialize() { }

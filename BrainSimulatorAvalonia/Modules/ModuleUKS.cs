@@ -22,8 +22,10 @@ namespace BrainSimulatorAvalonia.Modules
 
         public override void Initialize()
         {
-            // TODO: Integrate with Avalonia MainWindow/engine suspend/resume if needed
-            // UKSInitialized();
+            // Ported from WPF: Suspend engine, initialize UKS, notify modules, resume engine
+            MainWindow.SuspendEngine();
+            UKSInitialized();
+            MainWindow.ResumeEngine();
         }
 
         public override void SetUpBeforeSave()
@@ -31,20 +33,37 @@ namespace BrainSimulatorAvalonia.Modules
             base.SetUpBeforeSave();
             if (!string.IsNullOrEmpty(fileName))
             {
-                // TODO: Save UKS to XML
+                MainWindow.theUKS.SaveUKStoXMLFile();
             }
         }
 
         public override void SetUpAfterLoad()
         {
-            // TODO: Load UKS from XML or re-init
+            // Ported: Load UKS from XML or re-init
+            GetUKS();
             base.SetUpAfterLoad();
+            if (!string.IsNullOrEmpty(fileName))
+            {
+                fileName = BrainSimulatorAvalonia.Utils.RebaseFolderToCurrentDevEnvironment(fileName);
+                MainWindow.theUKS.LoadUKSfromXMLFile();
+            }
+            else
+            {
+                MainWindow.theUKS = new UKS.UKS();
+            }
         }
 
-        public List<Thing> GetTheUKS()
+        // Ported GetUKS and UKSInitialized from WPF
+        public void GetUKS()
         {
-            // TODO: Return UKS list from handler
-            return new List<Thing>();
+            // In WPF, this would return the UKS list; here, ensure UKS is available
+            // No-op if handled by MainWindow/module handler
+        }
+
+        public void UKSInitialized()
+        {
+            // Notify other modules of UKS initialization if needed
+            // In WPF, this is a placeholder for module notification logic
         }
     }
 }
