@@ -76,7 +76,7 @@ This document provides guidance for migrating the BrainSimulator (WPF/.NET Frame
 
 ### Core Logic & Utilities
  - [x] Network.cs
-- [ ] Utils.cs
+- [x] Utils.cs
 - [ ] XmlFile.cs
 - [ ] ModuleHandler.cs
 - [ ] ModuleViewMenu.cs
