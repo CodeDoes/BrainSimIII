@@ -75,7 +75,7 @@ This document provides guidance for migrating the BrainSimulator (WPF/.NET Frame
  - [x] NotesDialog.xaml.cs → NotesDialog.axaml.cs
 
 ### Core Logic & Utilities
-- [ ] Network.cs
+ - [x] Network.cs
 - [ ] Utils.cs
 - [ ] XmlFile.cs
 - [ ] ModuleHandler.cs
