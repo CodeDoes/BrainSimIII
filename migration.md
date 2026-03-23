@@ -79,7 +79,7 @@ This document provides guidance for migrating the BrainSimulator (WPF/.NET Frame
 - [x] Utils.cs
 - [x] XmlFile.cs
 - [x] ModuleHandler.cs
-- [ ] ModuleViewMenu.cs
+- [x] ModuleViewMenu.cs
 
 ### Modules (Code & Dialogs)
 #### For each module, migrate both code and dialog files:
