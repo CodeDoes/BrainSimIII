@@ -98,7 +98,7 @@ This document provides guidance for migrating the BrainSimulator (WPF/.NET Frame
   - [x] Modules/ModuleShowGraph.cs ✅ (fully migrated, 1:1 logic with WPF)
   - [x] Modules/ModuleShowGraphDlg.xaml → ModuleShowGraphDlg.axaml ✅ (structure and refresh logic ported; MSAGL graph rendering not yet implemented in Avalonia)
   - [x] Modules/ModuleShowGraphDlg.xaml.cs → ModuleShowGraphDlg.axaml.cs ✅ (structure and refresh logic ported; MSAGL graph rendering not yet implemented in Avalonia)
-- [ ] Modules/ModuleStressTest.cs
+  - [x] Modules/ModuleStressTest.cs ✅ (fully migrated, 1:1 logic with WPF)
 - [ ] Modules/ModuleStressTestDlg.xaml → ModuleStressTestDlg.axaml
 - [ ] Modules/ModuleStressTestDlg.xaml.cs → ModuleStressTestDlg.axaml.cs
 - [ ] Modules/ModuleTextFile.cs
