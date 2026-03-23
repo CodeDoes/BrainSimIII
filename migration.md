@@ -69,7 +69,7 @@ This document provides guidance for migrating the BrainSimulator (WPF/.NET Frame
  - [x] MainWindowPythonModules.cs
 
 ### Dialogs & Descriptions
- - [ ] ModuleDescription.xaml → ModuleDescription.axaml
+ - [x] ModuleDescription.xaml → ModuleDescription.axaml
  - [ ] ModuleDescription.xaml.cs → ModuleDescription.axaml.cs
  - [ ] NotesDialog.xaml → NotesDialog.axaml
  - [ ] NotesDialog.xaml.cs → NotesDialog.axaml.cs
