@@ -58,7 +58,7 @@ This document provides guidance for migrating the BrainSimulator (WPF/.NET Frame
 
 ### Application Entry & Main Window
  - [x] App.xaml → App.axaml
- - [ ] App.xaml.cs → App.axaml.cs
+ - [x] App.xaml.cs → App.axaml.cs
  - [ ] MainWindow.xaml → MainWindow.axaml
  - [ ] MainWindow.xaml.cs → MainWindow.axaml.cs
  - [ ] Program.cs (Avalonia entry point)
