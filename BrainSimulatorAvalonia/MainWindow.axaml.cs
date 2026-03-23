@@ -7,13 +7,45 @@ namespace BrainSimulatorAvalonia
 {
     public partial class MainWindow : Window
     {
+        // Ported fields from WPF
+        public List<object> activeModules = new(); // TODO: Replace object with ModuleBase after port
+        public List<string> pythonModules = new();
+        public static string currentFileName = "";
+        public static string pythonPath = "";
+        // Begin port: ModuleHandler and UKS integration (stubs)
+        // These will be replaced with actual implementations as porting continues
+        // public static ModuleHandler moduleHandler = new();
+        // public static UKS.UKS theUKS = moduleHandler.theUKS;
+        // Example stub usage:
+        // moduleHandler = new ModuleHandler();
+        // theUKS = moduleHandler.theUKS;
+
+        // TODO: Port ModuleHandler and UKS classes
+        // public static ModuleHandler moduleHandler = new();
+        // public static UKS.UKS theUKS = moduleHandler.theUKS;
+        public static MainWindow theWindow = null;
+
+
         public MainWindow()
         {
             InitializeComponent();
-            // TODO: Port logic from WPF MainWindow
-            // Set up event handlers for menu and toolbar (to be wired in XAML or code)
+            theWindow = this;
+            SetTitleBar();
+            this.Opened += MainWindow_Opened;
         }
 
+        private void SetTitleBar()
+        {
+            this.Title = "Brain Simulator III " + System.IO.Path.GetFileNameWithoutExtension(currentFileName);
+        }
+
+        private async void MainWindow_Opened(object? sender, EventArgs e)
+        {
+            // TODO: Port pythonPath, moduleHandler, and UKS logic
+            // Example: ShowMessage("MainWindow loaded (stub)");
+        }
+
+        // TODO: Port all methods and logic from WPF MainWindow.xaml.cs
         // Show a simple message box (Avalonia equivalent)
         async void ShowMessage(string message, string title = "Info")
         {
@@ -27,16 +59,13 @@ namespace BrainSimulatorAvalonia
                     Children =
                     {
                         new TextBlock { Text = message, Margin = new Thickness(10) },
-                        new Button { Content = "OK", HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center, Margin = new Thickness(10),
-                            [!Button.CommandProperty] = new Avalonia.Data.Binding("CloseWindowCommand")
-                        }
+                        new Button { Content = "OK", HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center, Margin = new Thickness(10) }
                     }
                 }
             };
             await dialog.ShowDialog(this);
         }
 
-        // Show an open file dialog (Avalonia equivalent)
         async System.Threading.Tasks.Task<string?> ShowOpenFileDialogAsync()
         {
             var dialog = new OpenFileDialog
@@ -47,7 +76,6 @@ namespace BrainSimulatorAvalonia
             return result != null && result.Length > 0 ? result[0] : null;
         }
 
-        // Show a save file dialog (Avalonia equivalent)
         async System.Threading.Tasks.Task<string?> ShowSaveFileDialogAsync()
         {
             var dialog = new SaveFileDialog
@@ -58,34 +86,6 @@ namespace BrainSimulatorAvalonia
             return result;
         }
 
-        // Placeholder for File->New
-        void OnFileNew()
-        {
-            // TODO: Implement new file logic
-        }
-
-        // Placeholder for File->Open
-        void OnFileOpen()
-        {
-            // TODO: Implement open file logic
-        }
-
-        // Placeholder for File->Save
-        void OnFileSave()
-        {
-            // TODO: Implement save file logic
-        }
-
-        // Placeholder for File->Save As
-        void OnFileSaveAs()
-        {
-            // TODO: Implement save as logic
-        }
-
-        // Placeholder for File->Exit
-        void OnFileExit()
-        {
-            // TODO: Implement exit logic
-        }
+        // TODO: Port all other methods from WPF MainWindow.xaml.cs
     }
 }
