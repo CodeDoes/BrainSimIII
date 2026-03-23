@@ -1,0 +1,9 @@
+<local:ModuleBaseDlg xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:BrainSimulatorAvalonia.Modules"
+    x:Class="BrainSimulatorAvalonia.Modules.ModuleEmptyDlg"
+    Title="Empty Dialog Template" Width="560" Height="170" Background="Gray">
+    <Grid Margin="14">
+        <!-- Empty dialog template for Avalonia -->
+    </Grid>
+</local:ModuleBaseDlg>
