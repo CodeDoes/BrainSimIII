@@ -95,7 +95,7 @@ This document provides guidance for migrating the BrainSimulator (WPF/.NET Frame
 - [x] Modules/ModuleOnlineInfo.cs
 - [x] Modules/ModuleOnlineInfoDlg.xaml → ModuleOnlineInfoDlg.axaml
   - [x] Modules/ModuleOnlineInfoDlg.xaml.cs → ModuleOnlineInfoDlg.axaml.cs ✅ (fully migrated, 1:1 logic with WPF)
-- [ ] Modules/ModuleShowGraph.cs
+  - [x] Modules/ModuleShowGraph.cs ✅ (fully migrated, 1:1 logic with WPF)
 - [ ] Modules/ModuleShowGraphDlg.xaml → ModuleShowGraphDlg.axaml
 - [ ] Modules/ModuleShowGraphDlg.xaml.cs → ModuleShowGraphDlg.axaml.cs
 - [ ] Modules/ModuleStressTest.cs
