@@ -83,7 +83,7 @@ This document provides guidance for migrating the BrainSimulator (WPF/.NET Frame
 
 ### Modules (Code & Dialogs)
 #### For each module, migrate both code and dialog files:
-- [ ] Modules/ModuleBase.cs
+- [x] Modules/ModuleBase.cs
 - [ ] Modules/ModuleBaseDlg.cs
 - [ ] Modules/ModuleEmpty.cs
 - [ ] Modules/ModuleEmptyDlg.xaml → ModuleEmptyDlg.axaml
