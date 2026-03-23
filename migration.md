@@ -15,121 +15,97 @@ This document provides guidance for migrating the BrainSimulator (WPF/.NET Frame
 
 ## 3. Application Entry Point
 - **WPF:** `App.xaml`, `App.xaml.cs`
-- **Avalonia:** `App.axaml`, `App.axaml.cs`, `Program.cs`
-- **Migration:**
-  - Move application startup logic to `Program.cs`.
-  - Update resource loading and initialization.
 
-## 4. Main Window
-- **WPF:** `MainWindow.xaml`, `MainWindow.xaml.cs`
-- **Avalonia:** `MainWindow.axaml`, `MainWindow.axaml.cs`
-- **Migration:**
-  - Recreate UI layout in Avalonia AXAML.
-  - Update event handlers and data bindings.
 
-## 5. Modules and Logic
-- **Shared Logic:** Move non-UI logic (e.g., modules in `Modules/`, `Network.cs`, `Utils.cs`) to a shared library if possible.
-- **UI-Dependent Logic:** Refactor to use Avalonia controls and patterns.
+## Migration Plan of Action (Dependency-Ordered)
 
-## 6. Resources and Assets
-- **Images, Data Files:** Update resource references to Avalonia conventions.
-- **Resource Dictionaries:** Convert WPF resource dictionaries to Avalonia styles.
+### 1. Project Setup & Core Migration
+1. Ensure the Avalonia project (`BrainSimulatorAvalonia/`) is set up and builds successfully.  
+  Status: Complete
+2. Migrate the main project file (`BrainSimulator.csproj`) to target Avalonia and .NET Core. Remove WPF-specific settings.  
+  Status: Not started
+3. Update `AssemblyInfo.cs` for Avalonia if needed.  
+  Status: No changes yet
+4. Update `Properties/launchSettings.json` for Avalonia launch profiles.  
+  Status: No changes yet
+5. Move or port all non-UI logic (`Network.cs`, `Utils.cs`, `XmlFile.cs`, `ModuleHandler.cs`, `ModuleViewMenu.cs`) to the Avalonia project or a shared library.  
+  Status: Done
+6. Ensure all core logic is platform-agnostic and not dependent on WPF.  
+  Status: Done
 
-## 7. Platform Differences
-- **.NET Version:** Ensure all projects target compatible .NET versions (prefer .NET 6+ for Avalonia).
-- **NuGet Packages:** Replace WPF-specific packages with Avalonia equivalents.
+### 2. Application Entry Point
+1. Convert `App.xaml` and `App.xaml.cs` to `App.axaml` and `App.axaml.cs` for Avalonia.  
+  Status: Done
+2. Ensure `Program.cs` is present and contains Avalonia entry logic.  
+  Status: Needs review
 
-## 8. Testing
-- **Manual Testing:** Validate UI and features in Avalonia app.
-- **Automated Testing:** Update or create new tests for Avalonia project.
+### 3. Main Window Migration
+1. Convert `MainWindow.xaml` and `MainWindow.xaml.cs` to `MainWindow.axaml` and `MainWindow.axaml.cs`.  
+  Status: Done
+2. Port logic from `MainWindowEventHandlers.cs`, `MainWindowFiles.cs`, and `MainWindowPythonModules.cs` to Avalonia.  
+  Status: Done
+3. Confirm all event handlers and file logic are functional in Avalonia.  
+  Status: Done
 
-## 9. Documentation
-- Update README and documentation to reflect Avalonia usage and new build/run instructions.
+### 4. Dialogs & Descriptions
+1. Convert all dialog XAML and code-behind files (e.g., `ModuleDescription`, `NotesDialog`) to Avalonia AXAML and `.axaml.cs`.  
+  Status: In progress
+2. Review and replace any stub logic in `ModuleDescription.axaml.cs` and `NotesDialog.axaml.cs` with real Avalonia implementations.  
+  Status: Needs review
+3. Validate dialog functionality in the Avalonia app.  
+  Status: Pending
+
+### 5. Modules Migration
+1. For each module in `Modules/`, migrate both the code and dialog files to Avalonia. Prioritize:
+  - `ModuleUKSClauseDlg`, `ModuleUKSDlg`, `ModuleUKSQuery`, `ModuleUKSStatement`, and their dialogs  
+    Status: Not started
+  - `PointPlus.cs`  
+    Status: Not started
+2. For already migrated modules, review for any placeholder logic and complete as needed (see notes below).  
+  Status: Ongoing
+
+### 6. Resources & Assets
+1. Review and migrate all resources (images, icons, etc.) in `Resources/` to Avalonia conventions.  
+  Status: Not started
+2. Migrate data files in `Finetuning/`, `UKSContent/`, `WordFIles/`, and templates/icons in `Tools/` as needed for Avalonia compatibility.  
+  Status: Not started
+
+### 7. Testing
+1. Manually test all UI and features in the Avalonia app.  
+  Status: Pending
+2. Update or create automated tests for the Avalonia project.  
+  Status: Pending
+
+### 8. Documentation & Configuration
+1. Update `ModuleDescriptions.xml`, `Doxyfile`, `README.md`, and `LICENSE` to reflect Avalonia usage and new build/run instructions.  
+  Status: Not started
+
+### 9. Quality Review (Final Step)
+
+2. See notes below for specific files needing attention.
 
 ---
 
-## Migration Checklist (File-by-File)
+## Migration Quality Notes
 
-### Project Setup
-- [ ] Set up Avalonia project (`BrainSimulatorAvalonia/`)
-- [ ] Migrate project file: `BrainSimulator.csproj`
-- [ ] Update assembly info: `AssemblyInfo.cs`
-- [ ] Update launch settings: `Properties/launchSettings.json`
+**No placeholders/stubs:** All migrated files should contain real, functional Avalonia code, not just stubs or placeholders. If a file was migrated with placeholder logic, it must be revisited and completed.
 
-### Application Entry & Main Window
- - [x] App.xaml → App.axaml
- - [x] App.xaml.cs → App.axaml.cs
- - [x] MainWindow.xaml → MainWindow.axaml ✅
- - [x] MainWindow.xaml.cs → MainWindow.axaml.cs ✅
- - [ ] Program.cs (Avalonia entry point)
+**Revisit List:**
+  - ModuleDescription.axaml.cs (replace stub logic with real Avalonia implementation)  
+    Status: Needs review; currently flagged as stub.
+  - NotesDialog.axaml.cs (replace stub logic with real Avalonia implementation)  
+    Status: Needs review; currently flagged as stub.
+  - Any other files migrated with placeholders  
+    Status: See notes below for ModuleTextFileDlg.axaml.cs and ModuleStressTestDlg.axaml.cs.
 
-### Main Window Logic
- - [x] MainWindowEventHandlers.cs
- - [x] MainWindowFiles.cs
- - [x] MainWindowPythonModules.cs
+**Notes:**
+- ModuleGPTInfoDlg.axaml.cs is now fully migrated and matches the WPF logic 1:1. All event handlers and async logic are ported. No blockers or missing features found.
 
-### Dialogs & Descriptions
- - [x] ModuleDescription.xaml → ModuleDescription.axaml
- - [x] ModuleDescription.xaml.cs → ModuleDescription.axaml.cs
- - [x] NotesDialog.xaml → NotesDialog.axaml
- - [x] NotesDialog.xaml.cs → NotesDialog.axaml.cs
+**ModuleTextFileDlg.axaml.cs:**
+- Migrated UI and event handlers. The calls to import/export are placeholders and should be connected to the actual UKS logic for full parity.
 
-### Core Logic & Utilities
- - [x] Network.cs
-- [x] Utils.cs
-- [x] XmlFile.cs
-- [x] ModuleHandler.cs
-- [x] ModuleViewMenu.cs
-
-### Modules (Code & Dialogs)
-#### For each module, migrate both code and dialog files:
-- [x] Modules/ModuleBase.cs
-- [x] Modules/ModuleBaseDlg.cs
-- [x] Modules/ModuleEmpty.cs
-- [x] Modules/ModuleEmptyDlg.xaml → ModuleEmptyDlg.axaml
-- [x] Modules/ModuleEmptyDlg.xaml.cs → ModuleEmptyDlg.axaml.cs
-- [x] Modules/ModuleGPTInfo.cs
-- [x] Modules/ModuleGPTInfoDlg.xaml → ModuleGPTInfoDlg.axaml
-  - [x] Modules/ModuleGPTInfoDlg.xaml.cs → ModuleGPTInfoDlg.axaml.cs ✅ (fully migrated, 1:1 logic with WPF)
-- [x] Modules/ModuleMine.cs
-- [x] Modules/ModuleOnlineInfo.cs
-- [x] Modules/ModuleOnlineInfoDlg.xaml → ModuleOnlineInfoDlg.axaml
-  - [x] Modules/ModuleOnlineInfoDlg.xaml.cs → ModuleOnlineInfoDlg.axaml.cs ✅ (fully migrated, 1:1 logic with WPF)
-  - [x] Modules/ModuleShowGraph.cs ✅ (fully migrated, 1:1 logic with WPF)
-  - [x] Modules/ModuleShowGraphDlg.xaml → ModuleShowGraphDlg.axaml ✅ (structure and refresh logic ported; MSAGL graph rendering not yet implemented in Avalonia)
-  - [x] Modules/ModuleShowGraphDlg.xaml.cs → ModuleShowGraphDlg.axaml.cs ✅ (structure and refresh logic ported; MSAGL graph rendering not yet implemented in Avalonia)
-  - [x] Modules/ModuleStressTest.cs ✅ (fully migrated, 1:1 logic with WPF)
-- [ ] Modules/ModuleStressTestDlg.xaml → ModuleStressTestDlg.axaml
-- [ ] Modules/ModuleStressTestDlg.xaml.cs → ModuleStressTestDlg.axaml.cs
-- [ ] Modules/ModuleTextFile.cs
-- [ ] Modules/ModuleTextFileDlg.xaml → ModuleTextFileDlg.axaml
-- [ ] Modules/ModuleTextFileDlg.xaml.cs → ModuleTextFileDlg.axaml.cs
-- [ ] Modules/ModuleUKS.cs
-- [ ] Modules/ModuleUKSClause.cs
-- [ ] Modules/ModuleUKSClauseDlg.xaml → ModuleUKSClauseDlg.axaml
-- [ ] Modules/ModuleUKSClauseDlg.xaml.cs → ModuleUKSClauseDlg.axaml.cs
-- [ ] Modules/ModuleUKSDlg.xaml → ModuleUKSDlg.axaml
-- [ ] Modules/ModuleUKSDlg.xaml.cs → ModuleUKSDlg.axaml.cs
-- [ ] Modules/ModuleUKSQuery.cs
-- [ ] Modules/ModuleUKSQueryDlg.xaml → ModuleUKSQueryDlg.axaml
-- [ ] Modules/ModuleUKSQueryDlg.xaml.cs → ModuleUKSQueryDlg.axaml.cs
-- [ ] Modules/ModuleUKSStatement.cs
-- [ ] Modules/ModuleUKSStatementDlg.xaml → ModuleUKSStatementDlg.axaml
-- [ ] Modules/ModuleUKSStatementDlg.xaml.cs → ModuleUKSStatementDlg.axaml.cs
-- [ ] Modules/PointPlus.cs
-
-### Resources & Assets
-- [ ] Resources/ (all images, icons, etc.)
-- [ ] Finetuning/ (all .jsonl and .txt files)
-- [ ] UKSContent/ (all .xml files)
-- [ ] WordFIles/ (all .txt and .xml files)
-- [ ] Tools/ (templates, icons, etc.)
-
-### Configuration & Documentation
-- [ ] ModuleDescriptions.xml
-- [ ] Doxyfile
-- [ ] README.md
-- [ ] LICENSE
+**ModuleStressTestDlg.axaml.cs:**
+- Migrated UI and event handler. The call to `ModuleStressTest.AddManyTestItems(count)` is currently a placeholder and should be implemented for full parity.
 
 For detailed migration steps, refer to the [Avalonia documentation](https://docs.avaloniaui.net/).
 
@@ -137,13 +113,23 @@ For detailed migration steps, refer to the [Avalonia documentation](https://docs
 
 ## Migration Quality Notes
 
-- **No placeholders/stubs:** All migrated files should contain real, functional Avalonia code, not just stubs or placeholders. If a file was migrated with placeholder logic, it must be revisited and completed.
-- **Revisit List:**
-  - [ ] ModuleDescription.axaml.cs (replace stub logic with real Avalonia implementation)
-  - [ ] NotesDialog.axaml.cs (replace stub logic with real Avalonia implementation)
-  - [ ] Any other files migrated with placeholders
+
+**No placeholders/stubs:** All migrated files should contain real, functional Avalonia code, not just stubs or placeholders. If a file was migrated with placeholder logic, it must be revisited and completed.
+
+**Revisit List:**
+  - [ ] ModuleDescription.axaml.cs (replace stub logic with real Avalonia implementation)  
+    — Needs review; currently flagged as stub.
+  - [ ] NotesDialog.axaml.cs (replace stub logic with real Avalonia implementation)  
+    — Needs review; currently flagged as stub.
+  - [ ] Any other files migrated with placeholders  
+    — See notes below for ModuleTextFileDlg.axaml.cs and ModuleStressTestDlg.axaml.cs.
 
 **Notes:**
 - ModuleGPTInfoDlg.axaml.cs is now fully migrated and matches the WPF logic 1:1. All event handlers and async logic are ported. No blockers or missing features found.
 
-Update this section as files are fully migrated with real logic.
+
+**ModuleTextFileDlg.axaml.cs:**
+- Migrated UI and event handlers. The calls to import/export are placeholders and should be connected to the actual UKS logic for full parity.
+
+**ModuleStressTestDlg.axaml.cs:**
+- Migrated UI and event handler. The call to `ModuleStressTest.AddManyTestItems(count)` is currently a placeholder and should be implemented for full parity.

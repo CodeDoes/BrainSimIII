@@ -1,0 +1,11 @@
+<mods:ModuleBaseDlg xmlns="https://github.com/avaloniaui"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:mods="clr-namespace:BrainSimulatorAvalonia.Modules"
+                   x:Class="BrainSimulatorAvalonia.Modules.ModuleTextFileDlg"
+                   Title="Handle UKS Txt file Format" Width="560" Height="170" Background="Gray">
+    <Grid Margin="14">
+        <TextBlock Name="StatusText" Margin="0,0,0,100" />
+        <Button Name="ImportButton" Content="Import" Width="90" IsDefault="True" Height="29" Margin="99,44,343,0" HorizontalAlignment="Center" VerticalAlignment="Top" Click="ImportButton_Click" />
+        <Button Name="ExportButton" Content="Export" Width="90" IsDefault="False" Height="29" Margin="221,44,221,0" HorizontalAlignment="Center" VerticalAlignment="Top" Click="ExportButton_Click" />
+    </Grid>
+</mods:ModuleBaseDlg>
