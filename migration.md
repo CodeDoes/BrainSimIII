@@ -87,7 +87,7 @@ This document provides guidance for migrating the BrainSimulator (WPF/.NET Frame
 - [x] Modules/ModuleBaseDlg.cs
 - [x] Modules/ModuleEmpty.cs
 - [x] Modules/ModuleEmptyDlg.xaml → ModuleEmptyDlg.axaml
-- [ ] Modules/ModuleEmptyDlg.xaml.cs → ModuleEmptyDlg.axaml.cs
+- [x] Modules/ModuleEmptyDlg.xaml.cs → ModuleEmptyDlg.axaml.cs
 - [ ] Modules/ModuleGPTInfo.cs
 - [ ] Modules/ModuleGPTInfoDlg.xaml → ModuleGPTInfoDlg.axaml
 - [ ] Modules/ModuleGPTInfoDlg.xaml.cs → ModuleGPTInfoDlg.axaml.cs
