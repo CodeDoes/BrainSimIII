@@ -1,0 +1,11 @@
+<mods:ModuleBaseDlg xmlns="https://github.com/avaloniaui"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:mods="clr-namespace:BrainSimulatorAvalonia.Modules"
+                   x:Class="BrainSimulatorAvalonia.Modules.ModuleShowGraphDlg"
+                   Title="Show Graph Dialog" Width="560" Height="170" Background="Gray">
+    <Grid Name="theGrid">
+        <!-- TODO: Replace with Avalonia graph viewer or custom control -->
+        <Border Name="GraphHost" Margin="0,60,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Black"/>
+        <Button Name="buttonRefresh" Content="Refresh" Width="90" IsDefault="True" Height="29" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="ButtonRefresh_Click"/>
+    </Grid>
+</mods:ModuleBaseDlg>
