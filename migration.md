@@ -65,7 +65,7 @@ This document provides guidance for migrating the BrainSimulator (WPF/.NET Frame
 
 ### Main Window Logic
  - [x] MainWindowEventHandlers.cs
- - [ ] MainWindowFiles.cs
+ - [x] MainWindowFiles.cs
  - [ ] MainWindowPythonModules.cs
 
 ### Dialogs & Descriptions
